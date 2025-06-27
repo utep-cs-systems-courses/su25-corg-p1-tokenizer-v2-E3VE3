@@ -18,7 +18,7 @@ void add_history(struct HistoryItem **head, int id, char *str) {
         cur->next = new_item;
     }
 }
-
+//Returns the pointer to the item with the givenID
 void print_history(struct HistoryItem *head) {
     while (head) {
         printf("%d: %s", head->id, head->str);

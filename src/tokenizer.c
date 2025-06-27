@@ -2,25 +2,25 @@
 #include <stdlib.h>
 #include "tokenizer.h"
 
-int space_char(char c) {
+int space_char(char c) {          //Returns true if there is a space or tab
     return c == ' ' || c == '\t';
 }
 
-int non_space_char(char c) {
+int non_space_char(char c) {      //Returns true if no spaces   
     return !space_char(c) && c != '\0';
 }
 
-char *token_start(char *s) {
+char *token_start(char *s) {      //finds the beggining of the next token(If space theres token)  
     while (*s && space_char(*s)) s++;
     return *s ? s : NULL;
 }
 
-char *token_terminator(char *token) {
+char *token_terminator(char *token) { //finds the end of token
     while (*token && non_space_char(*token)) token++;
     return token;
 }
 
-int count_tokens(char *s) {
+int count_tokens(char *s) { 
     int count = 0;
     for (char *p = token_start(s); p; p = token_start(token_terminator(p)))
         count++;
